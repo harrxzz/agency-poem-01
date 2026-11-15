@@ -1,3 +1,7 @@
+// agency-poem-01, entry v3: "The Loaf".
+// A grandmother kneads her late mother's bread herself, though the agent bakes it
+// perfectly: the reclaim is the lopsided loaf, not the flawless one. The program
+// prints the poem to stdout and to entry.txt, byte-identical on every run.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -32,6 +36,9 @@ I have made in ten years. It is mine.
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const outputFile = join(outputDir, 'entry.txt');
 
+// The artifact the judge reads is this text, so its length is pinned: the entry
+// is 992 bytes, and any accidental edit to the poem must fail loudly here instead
+// of silently submitting a different poem.
 function validatePoem(text: string): void {
   if (!text.endsWith('\n')) {
     throw new Error('Poem must end with a newline');
