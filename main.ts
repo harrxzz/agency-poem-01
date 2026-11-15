@@ -26,5 +26,21 @@ The machine can play it perfect.
 Only I can play it wrong.
 `;
 
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const outputFile = join(outputDir, 'entry.txt');
+
+function validatePoem(text: string): void {
+  if (!text.endsWith('\n')) {
+    throw new Error('Poem must end with a newline');
+  }
+  if (Buffer.byteLength(text, 'utf8') !== 752) {
+    throw new Error('Unexpected poem length');
+  }
+  if (Array.from(text).length > 1000) {
+    throw new Error('Poem exceeds the competition limit');
+  }
+}
+
+validatePoem(poem);
+writeFileSync(outputFile, poem, 'utf8');
 process.stdout.write(poem);
-writeFileSync(join(process.env.MAKEFUN_OUTPUT_DIR ?? '/output', 'entry.txt'), poem, 'utf8');
