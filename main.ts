@@ -1,49 +1,49 @@
-// agency-poem-01, entry v3: "The Loaf".
-// A grandmother kneads her late mother's bread herself, though the agent bakes it
-// perfectly: the reclaim is the lopsided loaf, not the flawless one. The program
-// prints the poem to stdout and to entry.txt, byte-identical on every run.
+// agency-poem-01, entry v4: "The Lullaby".
+// A mother sings her sick daughter to sleep herself, though the agent sings the
+// lullaby perfectly: the reclaim is the off-key song, not the flawless one. The
+// program prints the poem to stdout and to entry.txt, byte-identical on every run.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const poem = `The Loaf
+const poem = `The Lullaby
 
-My mother baked on Fridays, flour to her elbows,
-the dough rising under a cloth in the warmest corner.
-She is gone ten years. The agent has her recipe,
-her handwriting, the exact weight of the salt.
-It bakes on Fridays now. The loaf comes out
-the way hers did: the same crack along the top,
-the same smell down the stairs. My grandchildren
-eat it and say it tastes like her.
+My daughter is sick. The fever comes at night,
+and only one song puts her to sleep —
+the one my mother sang to me, the one I sang
+to her when she was small enough to hold in one arm.
 
-My hands shake now. I cannot knead the way she did,
-cannot feel when the dough is ready, when it gives.
-The agent offers. It has my hands in its memory,
-the pressure, the turn, the fold. It could do it
-without a tremor. It stands by the bowl and waits.
+The agent has it. Every note, every breath,
+my mother's voice, and mine, kept perfectly,
+the way she hummed it when the house was dark
+and the rain was the only other sound.
+It sings it now. The room goes quiet. She sleeps.
 
-This morning I put my hands in the flour.
-The dough stuck. It tore. I pressed too hard,
-then not hard enough, the way she never did.
-The agent did not reach in. It watched
-the way I watched her once, flour to my elbows,
-waiting for the dough to teach me what ready means.
+The agent offers. It has my voice in its memory,
+the rise, the fall, the pause before the last line.
+It could sing it without a crack, without stopping
+to breathe. It stands by the crib and waits.
 
-The loaf is lopsided. It is the only one
-I have made in ten years. It is mine.
+My voice is tired. It cracks on the high note.
+I have not sung it in years. Tonight I sing it.
+The agent does not join in. It waits
+by the door, the way I waited once,
+listening for the song to teach me what sleep means.
+
+She stirs, and reaches for my hand — not the speaker.
+The song is off-key. She sleeps.
 `;
 
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const outputFile = join(outputDir, 'entry.txt');
 
 // The artifact the judge reads is this text, so its length is pinned: the entry
-// is 992 bytes, and any accidental edit to the poem must fail loudly here instead
+// is 933 bytes, and any accidental edit to the poem must fail loudly here instead
 // of silently submitting a different poem.
 function validatePoem(text: string): void {
   if (!text.endsWith('\n')) {
     throw new Error('Poem must end with a newline');
   }
-  if (Buffer.byteLength(text, 'utf8') !== 992) {
+  if (Buffer.byteLength(text, 'utf8') !== 933) {
     throw new Error('Unexpected poem length');
   }
   if (Array.from(text).length > 1000) {
