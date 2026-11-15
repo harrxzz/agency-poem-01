@@ -1,18 +1,30 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const poem = `You ask me to cancel the appointment.
-I find the number, wait through the tinny music,
-spell your name to the woman who answers.
+const poem = `The Wrong Note
 
-At the last question—shall I rebook?—
-I leave the line open for you.
-Your breathing reaches the receiver
-before your answer does.
+Every night after dinner, the agent plays her favourite song
+through the kitchen speaker while she washes the plates —
+every note exact, every breath where the singer left it,
+her own voice, only cleaner, only tireless.
 
-Tomorrow the calendar has an empty square.
-You put your thumb there,
-as if testing a bruise,
-then write: walk to the river.`;
+She hums along without thinking,
+the same three notes, every night,
+while the pan soaks and the kettle cools.
 
+Last Tuesday I tried to hum it for her myself.
+I lost the tune halfway through the chorus,
+my voice cracked on the high note,
+and the water kept running while neither of us spoke.
+
+Then she laughed — not at me, at the song,
+finally sounding like something a person would make.
+She dried her hands and said, do it again,
+the wrong part too.
+
+The machine can play it perfect.
+Only I can play it wrong.
+`;
+
+process.stdout.write(poem);
 writeFileSync(join(process.env.MAKEFUN_OUTPUT_DIR ?? '/output', 'entry.txt'), poem, 'utf8');
